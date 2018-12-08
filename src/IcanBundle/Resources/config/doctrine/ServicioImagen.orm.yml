@@ -1,0 +1,32 @@
+IcanBundle\Entity\ServicioImagen:
+  type: entity
+  repositoryClass: IcanBundle\Entity\ServicioImagenRepository
+  table: servicio_imagen
+  id:
+    imagenId:
+      type: integer
+      nullable: false
+      options:
+        unsigned: false
+      id: true
+      column: imagen_id
+      generator:
+        strategy: AUTO
+  fields:
+    imagen:
+      type: string
+      length: 255
+      options:
+        fixed: false
+      nullable: false
+  manyToOne:
+    servicio:
+      targetEntity: Servicio
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        servicio_id:
+          referencedColumnName: servicio_id
+      orphanRemoval: false
+  lifecycleCallbacks: {  }

@@ -1,0 +1,37 @@
+IcanBundle\Entity\QuienesSomos:
+    type: entity
+    repositoryClass: IcanBundle\Entity\QuienesSomosRepository
+    table: quienes_somos
+    id:
+      paginaId:
+        type: integer
+        nullable: false
+        options:
+          unsigned: false
+        id: true
+        column: pagina_id
+        generator:
+          strategy: AUTO
+    fields:
+        titulo:
+            type: string
+            length: 255
+            options:
+              fixed: false
+            nullable: true
+        descripcion:
+            type: string
+            length: 255
+            options:
+              fixed: false
+            nullable: true
+        tags:
+            type: text
+            nullable: false
+        imagen:
+            type: string
+            length: 255
+            options:
+              fixed: false
+            nullable: true
+    lifecycleCallbacks: {  }

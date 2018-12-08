@@ -1,0 +1,19 @@
+servicio:
+    path:  /servicios
+    defaults: { _controller: IcanBundle:Servicio:index }
+
+salvarServicio:
+    path:  /servicio/salvarServicio
+    defaults: { _controller: IcanBundle:Servicio:salvar, _format: json }
+    
+salvarImagenServicio:
+    path:  /servicio/salvarImagen
+    defaults: { _controller: IcanBundle:Servicio:salvarImagen, _format: json }
+    
+eliminarImagenServicio:
+    path:  /servicio/eliminarImagen
+    defaults: { _controller: IcanBundle:Servicio:eliminarImagen, _format: json }
+
+cargarDatosServicio:
+    path:  /servicio/cargarDatos
+    defaults: { _controller: IcanBundle:Servicio:cargarDatos, _format: json }

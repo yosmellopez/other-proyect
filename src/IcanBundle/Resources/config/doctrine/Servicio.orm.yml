@@ -1,0 +1,31 @@
+IcanBundle\Entity\Servicio:
+    type: entity
+    repositoryClass: IcanBundle\Entity\ServicioRepository
+    table: servicio
+    id:
+      servicioId:
+        type: integer
+        nullable: false
+        options:
+          unsigned: false
+        id: true
+        column: servicio_id
+        generator:
+          strategy: AUTO
+    fields:
+        titulo:
+            type: string
+            length: 255
+            options:
+              fixed: false
+            nullable: true
+        descripcion:
+            type: string
+            length: 255
+            options:
+              fixed: false
+            nullable: true
+        tags:
+            type: text
+            nullable: false
+    lifecycleCallbacks: {  }

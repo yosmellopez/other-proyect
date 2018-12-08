@@ -1,0 +1,36 @@
+home:
+  path:  /
+  defaults: { _controller: IcanBundle:Default:index }
+
+_usuario:
+  resource: "@IcanBundle/Resources/config/routing/usuario.yml"
+
+_perfil:
+  resource: "@IcanBundle/Resources/config/routing/perfil.yml"
+
+_slider:
+  resource: "@IcanBundle/Resources/config/routing/slider.yml"
+
+_categoria:
+  resource: "@IcanBundle/Resources/config/routing/categoria.yml"
+
+_marca:
+  resource: "@IcanBundle/Resources/config/routing/marca.yml"
+
+_producto:
+  resource: "@IcanBundle/Resources/config/routing/producto.yml"
+
+_redsocial:
+  resource: "@IcanBundle/Resources/config/routing/redsocial.yml"
+
+_mensaje:
+  resource: "@IcanBundle/Resources/config/routing/mensaje.yml"
+
+_quienes_somos:
+  resource: "@IcanBundle/Resources/config/routing/quienes_somos.yml"
+
+_servicios:
+  resource: "@IcanBundle/Resources/config/routing/servicios.yml"
+
+_seo_on_page:
+  resource: "@IcanBundle/Resources/config/routing/seo_on_page.yml"

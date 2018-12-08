@@ -1,0 +1,19 @@
+quienes_somos:
+    path:  /quienes-somos
+    defaults: { _controller: IcanBundle:QuienesSomos:index }
+
+salvarQuienesSomos:
+    path:  /quienessomos/salvarQuienesSomos
+    defaults: { _controller: IcanBundle:QuienesSomos:salvar, _format: json }
+    
+salvarImagenQuienesSomos:
+    path:  /quienessomos/salvarImagen
+    defaults: { _controller: IcanBundle:QuienesSomos:salvarImagen, _format: json }
+    
+eliminarImagenQuienesSomos:
+    path:  /quienessomos/eliminarImagen
+    defaults: { _controller: IcanBundle:QuienesSomos:eliminarImagen, _format: json }
+
+cargarDatosQuienesSomos:
+    path:  /quienessomos/cargarDatos
+    defaults: { _controller: IcanBundle:QuienesSomos:cargarDatos, _format: json }

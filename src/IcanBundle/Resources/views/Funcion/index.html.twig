@@ -1,0 +1,133 @@
+{% extends 'IcanBundle::layout.html.twig' %}
+
+{% block stylesheetspecific %} 
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/ican/assets/bootstrap-tree/bootstrap-tree/css/bootstrap-tree.css') }}" />
+<link rel="stylesheet" href="{{ asset('bundles/ican/css/tree.css') }}" />
+{% endblock %}
+{% block javascrptspecific %}   
+<script src="{{ asset('bundles/ican/assets/bootstrap-tree/bootstrap-tree/js/bootstrap-tree.js') }}"></script>
+<script src="{{ asset('bundles/ican/js/jquery.form.js') }}"></script> 
+<script src="{{ asset('bundles/ican/js/my/tree/funcion-tree.js') }}"></script>
+<script>
+    jQuery(document).ready(function() {
+        // initiate layout and plugins      
+        UITree.init();
+
+    });
+    </script>
+{% endblock %}
+
+{% block menu %}
+    <li class="">
+        <a href="{{url('home')}}"><i class="fa fa-caret-right fw"></i> Inicio</a>
+    </li>
+    {% for item in menu %}
+        <li class="{%if item.menu_id == 1%}active{%endif%}">
+            <a href="{%if item.url != ""%}{{url(item.url)}}{%else%}#{%endif%}">
+                <i class="fa fa-caret-right fw"></i> {{item.descripcion}}
+            </a>
+            {%if item.funciones|length > 0%}
+                <ul class="nav nav-second-level">
+                    {% for subitem in item.funciones %}
+                        <li class="{%if subitem.funcion_id == 2%}activo{%endif%}">
+                            <a class="" href="{%if subitem.url != ""%}{{url(subitem.url)}}{%else%}#{%endif%}">{{subitem.descripcion}}</a>
+                        </li>      
+                    {% endfor %}  
+                </ul>
+            {%endif%}
+        </li>
+    {% endfor %}  
+{% endblock %}   
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Administrar funcionalidades</h1>
+    </div>    
+</div> 
+{%include 'IcanBundle:Block:message.html.twig'%}
+<div class="row">
+    <div class="col-lg-6 col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-bars fa-fw"></i> Funcionalidades               
+            </div>                
+            <div class="panel-body">
+                <div id="processing-tree" class="processing" style="display: none;">Por favor espere...</div>
+                <div class="actions">
+                    <a class="btn btn-default btn-xs" id="funcion-tree-collapse" href="javascript:;"> Retraer <i class="fa fa-minus"></i></a>
+                    <a class="btn btn-default btn-xs" id="funcion-tree-expand" href="javascript:;"> Expandir <i class="fa fa-plus"></i></a>
+                        {%if permisos[0].editar ==1%}
+                            <a class="btn btn-default btn-xs disabled" id="funcion-tree-editar" href="javascript:;"> 
+                                Editar <i class="fa fa-edit fa-fw"></i>
+                            </a>
+                            {%else%}
+                            <a class="btn btn-default btn-xs disabled" id="funcion-tree-editar" href="javascript:;"> 
+                                Detalles <i class="fa fa-edit fa-fw"></i>
+                            </a>
+                        {%endif%}
+                        {%if permisos[0].eliminar ==1%}
+                            <a class="btn btn-default btn-xs disabled" id="funcion-tree-delete" href="javascript:;"> 
+                                Eliminar <i class="fa fa-times fa-fw"></i>
+                            </a>
+                        {%endif%}
+                    </div>                        
+                    <div class="space15"></div>
+                        <ul id="funcion-tree" class="tree">
+                            <li>
+                                <a data-value="funciones" data-toggle="branch" class="tree-toggle" data-role="branch" href="#">
+                                    Menus y Funciones
+                                </a>
+                                <ul id="nodo-padre" class="branch in">
+                                {% for funcion in funcionalidades %}                                        
+                                    <li id="nodo-funcion-{{funcion.funcion_id}}">
+                                        <a data-is-menu="1" id="{{funcion.funcion_id}}" data-value-descripcion="{{funcion.descripcion}}" data-toggle="branch" class="tree-toggle closed" href="#">
+                                           {{funcion.descripcion}}
+                                        </a>
+                                        <ul class="branch" id='branch_{{funcion.funcion_id}}'>
+                                            {% for funcionhija in funcion.funciones_hijas %}
+                                                <li id='leaf_{{funcionhija.funcion_id}}'>
+                                                    <a data-is-menu="0" id="{{funcionhija.funcion_id}}" data-role="leaf" href="#" data-value-funcion-id="{{funcion.funcion_id}}" data-value-menu="{{funcion.descripcion}}" data-value-descripcion="{{funcionhija.descripcion}}">
+                                                        <i class="fa fa-tasks fa-fw"></i>{{funcionhija.descripcion}}
+                                                    </a>
+                                                </li>                                                                                                     
+                                            {%endfor%}
+                                        </ul>
+                                    </li>                                        
+                                {%endfor%}
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>               
+        </div>
+    </div>    
+    <div class="col-lg-6 col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-bars fa-fw"></i>Ingrese los datos de la funcionalidad                                            
+            </div>                
+            <div class="panel-body">
+                <div id="processing-form" class="processing" style="display: none;">Por favor espere...</div>
+                <form action="#" class="no-padding no-margin" role="form" id="funcionform" method="post">
+                    <div class="form-group">
+                        <label id="tooltip-menu">Menu</label>
+                        <input type="hidden" class="form-control " id="funcion_id" name="funcion_id">  
+                        <input type="hidden" class="form-control " id="menu_id" name="menu_id">          
+                        <input type="hidden" class="form-control " id="editar" value="0">                     
+                        <input type="text" class="form-control" disabled="" id="menu" name="menu" placeholder="Seleccione un menu">  
+                    </div>                       
+                    <div class="form-group">                                                        
+                        <label>Descripción <span class="ic-small italic">(obligatorio)</span></label>
+                        <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese la descripción"/>                                        
+                    </div>                  
+                </form> 
+            </div>  
+            <div class="panel-footer" style="padding-left: 20%;">
+                <button id="btn-enviar" class="btn btn-default" type="button">Guardar</button>
+                <button id="btn-cancel" class="btn btn-default" type="button">Cancelar</button>
+            </div>
+        </div>
+    </div> 
+</div> 
+
+{% endblock %}
