@@ -1,0 +1,28 @@
+IcanBundle\Entity\Comuna:
+  type: entity
+  repositoryClass: IcanBundle\Entity\ComunaRepository
+  table: comuna
+  id:
+    comunaId:
+      type: integer
+      nullable: false
+      options:
+        unsigned: false
+      id: true
+      column: comuna_id
+      generator:
+        strategy: AUTO
+  fields:
+    region:
+      type: string
+      length: 255
+      nullable: false
+      options:
+        fixed: false
+    provincia:
+      type: string
+      length: 255
+      options:
+        fixed: false
+      nullable: true
+  lifecycleCallbacks: {  }

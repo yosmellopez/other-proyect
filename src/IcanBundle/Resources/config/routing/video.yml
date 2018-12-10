@@ -1,0 +1,31 @@
+video:
+    path:  /videos
+    defaults: { _controller: IcanBundle:Video:index }
+    
+listarVideo:
+    path:  /video/listarVideo
+    defaults: { _controller: IcanBundle:Video:listar, _format: json }
+
+eliminarVideo:
+    path:  /video/eliminarVideo
+    defaults: { _controller: IcanBundle:Video:eliminar, _format: json }
+    
+eliminarVideos:
+    path:  /video/eliminarVideos
+    defaults: { _controller: IcanBundle:Video:eliminarVideos, _format: json }
+ 
+salvarVideo:
+    path:  /video/salvarVideo
+    defaults: { _controller: IcanBundle:Video:salvarVideo, _format: json }
+    
+salvarImagenVideo:
+    path:  /video/salvarImagen
+    defaults: { _controller: IcanBundle:Video:salvarImagen, _format: json }
+    
+eliminarImagenVideo:
+    path:  /video/eliminarImagen
+    defaults: { _controller: IcanBundle:Video:eliminarImagen, _format: json }
+       
+cargarDatosVideo:
+    path:  /video/cargarDatos
+    defaults: { _controller: IcanBundle:Video:cargarDatos, _format: json }

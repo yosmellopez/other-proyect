@@ -33,4 +33,32 @@ class TipoProducto
      * @ORM\Column(name="tipo_producto", type="string", nullable=false)
      */
     private $tipoProducto;
+
+    /**
+     * @return int
+     */
+    public function getTipoProductoId() {
+        return $this->tipoProductoId;
+    }
+
+    /**
+     * @param int $tipoProductoId
+     */
+    public function setTipoProductoId($tipoProductoId) {
+        $this->tipoProductoId = $tipoProductoId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTipoProducto() {
+        return $this->tipoProducto;
+    }
+
+    /**
+     * @param string $tipoProducto
+     */
+    public function setTipoProducto($tipoProducto) {
+        $this->tipoProducto = $tipoProducto;
+    }
 }

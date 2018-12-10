@@ -1,0 +1,60 @@
+IcanBundle\Entity\Distribuidor:
+  type: entity
+  repositoryClass: IcanBundle\Entity\DistribuidorRepository
+  table: distribuidor
+  id:
+    distribuidorId:
+      type: integer
+      nullable: false
+      options:
+        unsigned: false
+      id: true
+      column: distribuidor_id
+      generator:
+        strategy: AUTO
+  fields:
+    nombre:
+      type: string
+      length: 255
+      options:
+        fixed: false
+      nullable: false
+    descripcion:
+      type: string
+      length: 255
+      options:
+        fixed: false
+      nullable: true
+    estado:
+      type: boolean
+      nullable: true
+    direccion:
+      type: string
+      length: 255
+      options:
+        fixed: false
+      nullable: true
+    telefono:
+      type: string
+      length: 12
+      options:
+        fixed: false
+      nullable: true
+    email:
+      type: string
+      length: 255
+      options:
+        fixed: false
+      nullable: true
+  manyToOne:
+    comuna:
+      targetEntity: Comuna
+      cascade: {  }
+      fetch: LAZY
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        comuna_id:
+          referencedColumnName: comuna_id
+      orphanRemoval: false
+  lifecycleCallbacks: {  }

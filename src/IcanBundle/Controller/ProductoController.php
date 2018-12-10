@@ -14,12 +14,10 @@ use Imagine\Image\ImageInterface;
 class ProductoController extends BaseController
 {
 
-    public function indexAction()
-    {
+    public function indexAction() {
         $categorias = $this->ListarCategoriasArbol();
 
-        $marcas = $this->getDoctrine()->getRepository('IcanBundle:Marca')
-            ->ListarOrdenadas();
+        $marcas = $this->getDoctrine()->getRepository('IcanBundle:Marca')->ListarOrdenadas();
 
         return $this->render('IcanBundle:Producto:index.html.twig', array(
             'categorias' => $categorias,
@@ -31,8 +29,7 @@ class ProductoController extends BaseController
      * listarAction Acción que lista los marcas
      *
      */
-    public function listarAction(Request $request)
-    {
+    public function listarAction(Request $request) {
         // search filter by keywords
         $query = !empty($request->get('query')) ? $request->get('query') : array();
         $sSearch = isset($query['generalSearch']) && is_string($query['generalSearch']) ? $query['generalSearch'] : '';
@@ -92,8 +89,7 @@ class ProductoController extends BaseController
      * listarParaRelacionadosAction Acción que lista los productos para relacionar
      *
      */
-    public function listarParaRelacionadosAction(Request $request)
-    {
+    public function listarParaRelacionadosAction(Request $request) {
         // search filter by keywords
         $query = !empty($request->get('query')) ? $request->get('query') : array();
         $sSearch = isset($query['generalSearch']) && is_string($query['generalSearch']) ? $query['generalSearch'] : '';
@@ -154,8 +150,7 @@ class ProductoController extends BaseController
      * salvarAction Acción que inserta un usuario en la BD
      *
      */
-    public function salvarAction(Request $request)
-    {
+    public function salvarAction(Request $request) {
         $producto_id = $request->get('producto_id');
 
         $categoria_id = $request->get('categoria');
@@ -197,8 +192,7 @@ class ProductoController extends BaseController
         }
     }
 
-    public function salvarImagenAction()
-    {
+    public function salvarImagenAction() {
         try {
             $nombre_archivo = $_FILES['foto']['name'];
             $array_nombre_archivo = explode('.', $nombre_archivo);
@@ -242,8 +236,7 @@ class ProductoController extends BaseController
      * eliminarAction Acción que elimina un rol en la BD
      *
      */
-    public function eliminarAction(Request $request)
-    {
+    public function eliminarAction(Request $request) {
         $producto_id = $request->get('producto_id');
 
         $resultado = $this->EliminarProducto($producto_id);
@@ -263,8 +256,7 @@ class ProductoController extends BaseController
      * eliminarProductosAction Acción que elimina varios productos en la BD
      *
      */
-    public function eliminarProductosAction(Request $request)
-    {
+    public function eliminarProductosAction(Request $request) {
         $ids = $request->get('ids');
 
         $resultado = $this->EliminarProductos($ids);
@@ -286,8 +278,7 @@ class ProductoController extends BaseController
      * cargarDatosAction Acción que carga los datos del usuario en la BD
      *
      */
-    public function cargarDatosAction(Request $request)
-    {
+    public function cargarDatosAction(Request $request) {
         $producto_id = $request->get('producto_id');
 
         $resultado = $this->CargarDatosProducto($producto_id);
@@ -308,8 +299,7 @@ class ProductoController extends BaseController
      * eliminarImagenAction Acción que elimina una imagen en la BD
      *
      */
-    public function eliminarImagenAction(Request $request)
-    {
+    public function eliminarImagenAction(Request $request) {
         $imagen = $request->get('imagen');
 
         $resultado = $this->EliminarImagen($imagen);
@@ -331,8 +321,7 @@ class ProductoController extends BaseController
      * eliminarRelacionadoAction Acción que elimina un producto relacionado en la BD
      *
      */
-    public function eliminarRelacionadoAction(Request $request)
-    {
+    public function eliminarRelacionadoAction(Request $request) {
         $productorelacion_id = $request->get('productorelacion_id');
 
         $resultado = $this->EliminarRelacionado($productorelacion_id);
@@ -353,8 +342,7 @@ class ProductoController extends BaseController
      * @param int $productorelacion_id Id
      * @author Marcel
      */
-    public function EliminarRelacionado($productorelacion_id)
-    {
+    public function EliminarRelacionado($productorelacion_id) {
         $resultado = array();
         $em = $this->getDoctrine()->getManager();
 
@@ -390,8 +378,7 @@ class ProductoController extends BaseController
      * @param int $producto_id Id
      * @author Marcel
      */
-    public function EliminarImagen($imagen)
-    {
+    public function EliminarImagen($imagen) {
         $resultado = array();
         //Eliminar foto       
         if ($imagen != "") {
@@ -432,8 +419,7 @@ class ProductoController extends BaseController
      *
      * @author Marcel
      */
-    public function CargarDatosProducto($producto_id)
-    {
+    public function CargarDatosProducto($producto_id) {
         $resultado = array();
         $arreglo_resultado = array();
 
@@ -521,8 +507,7 @@ class ProductoController extends BaseController
      * @param int $producto_id Id
      * @author Marcel
      */
-    public function EliminarProducto($producto_id)
-    {
+    public function EliminarProducto($producto_id) {
         $resultado = array();
         $em = $this->getDoctrine()->getManager();
 
@@ -597,8 +582,7 @@ class ProductoController extends BaseController
      * @param array $$ids Ids
      * @author Marcel
      */
-    public function EliminarProductos($ids)
-    {
+    public function EliminarProductos($ids) {
         $resultado = array();
         $em = $this->getDoctrine()->getManager();
 
@@ -678,8 +662,7 @@ class ProductoController extends BaseController
      * @author Marcel
      */
     public function ActualizarProducto($producto_id, $categoria_id, $marca_id, $nombre, $titulo, $descripcion, $tags, $stock, $precio,
-                                       $precioOferta, $mostrarPrecio, $estado, $fecha, $imagen, $imagenes, $productos)
-    {
+                                       $precioOferta, $mostrarPrecio, $estado, $fecha, $imagen, $imagenes, $productos) {
         $em = $this->getDoctrine()->getManager();
 
         $resultado = array();
@@ -816,8 +799,7 @@ class ProductoController extends BaseController
      * @author Marcel
      */
     public function SalvarProducto($categoria_id, $marca_id, $nombre, $titulo, $descripcion, $tags, $stock, $precio,
-                                   $precioOferta, $mostrarPrecio, $estado, $fecha, $imagen, $imagenes, $productos)
-    {
+                                   $precioOferta, $mostrarPrecio, $estado, $fecha, $imagen, $imagenes, $productos) {
         $em = $this->getDoctrine()->getManager();
         $resultado = array();
 
@@ -921,8 +903,7 @@ class ProductoController extends BaseController
      *
      * @author Marcel
      */
-    public function RenombrarImagen($id, $imagen, $cont = 0)
-    {
+    public function RenombrarImagen($id, $imagen, $cont = 0) {
         $dir = 'uploads/productos/';
         $imagen_new = "";
 
@@ -966,8 +947,7 @@ class ProductoController extends BaseController
      *
      * @author Marcel
      */
-    public function ListarProductosParaRelacionados($start, $limit, $sSearch, $iSortCol_0, $sSortDir_0, $categoria_id, $marca_id, $productos_id)
-    {
+    public function ListarProductosParaRelacionados($start, $limit, $sSearch, $iSortCol_0, $sSortDir_0, $categoria_id, $marca_id, $productos_id) {
         $arreglo_resultado = array();
         $cont = 0;
 
@@ -1019,8 +999,7 @@ class ProductoController extends BaseController
      * @param string $sSearch Para buscar
      * @author Marcel
      */
-    public function TotalProductosParaRelacionados($sSearch, $categoria_id, $marca_id, $productos_id)
-    {
+    public function TotalProductosParaRelacionados($sSearch, $categoria_id, $marca_id, $productos_id) {
         $total = $this->getDoctrine()->getRepository('IcanBundle:Producto')
             ->TotalProductosParaRelacionados($sSearch, $categoria_id, $marca_id, $productos_id);
 
@@ -1036,8 +1015,7 @@ class ProductoController extends BaseController
      *
      * @author Marcel
      */
-    public function ListarProductos($start, $limit, $sSearch, $iSortCol_0, $sSortDir_0, $categoria_id, $marca_id)
-    {
+    public function ListarProductos($start, $limit, $sSearch, $iSortCol_0, $sSortDir_0, $categoria_id, $marca_id) {
         $arreglo_resultado = array();
         $cont = 0;
 
@@ -1078,8 +1056,7 @@ class ProductoController extends BaseController
      * @param string $sSearch Para buscar
      * @author Marcel
      */
-    public function TotalProductos($sSearch, $categoria_id, $marca_id)
-    {
+    public function TotalProductos($sSearch, $categoria_id, $marca_id) {
         $total = $this->getDoctrine()->getRepository('IcanBundle:Producto')
             ->TotalProductos($sSearch, $categoria_id, $marca_id);
 
@@ -1090,8 +1067,7 @@ class ProductoController extends BaseController
      * ListarCategoriasArbol: Lista las categoria para el select en forma de arbol de la BD
      * @author Marcel
      */
-    public function ListarCategoriasArbol($estado = "1")
-    {
+    public function ListarCategoriasArbol($estado = "1") {
         $tree = array();
         //Categoria Padres
         $categoria_padres = $this->getDoctrine()->getRepository('IcanBundle:Categoria')
@@ -1125,8 +1101,7 @@ class ProductoController extends BaseController
         return $tree;
     }
 
-    public function getChilds($tree, $categoria_hijos, $master_id, $class_count = 0, $categoria_padre_id)
-    {
+    public function getChilds($tree, $categoria_hijos, $master_id, $class_count = 0, $categoria_padre_id) {
         $class_count = $class_count + 1;
 
         for ($i = 0; $i < count($categoria_hijos); $i++) {
@@ -1160,8 +1135,7 @@ class ProductoController extends BaseController
      *
      * @author Marcel
      */
-    public function ListarAcciones($id)
-    {
+    public function ListarAcciones($id) {
 
         $acciones = "";
 

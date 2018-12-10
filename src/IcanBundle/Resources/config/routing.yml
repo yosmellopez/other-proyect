@@ -34,3 +34,9 @@ _servicios:
 
 _seo_on_page:
   resource: "@IcanBundle/Resources/config/routing/seo_on_page.yml"
+
+_distribuidor:
+  resource: "@IcanBundle/Resources/config/routing/distribuidor.yml"
+
+_video:
+  resource: "@IcanBundle/Resources/config/routing/video.yml"

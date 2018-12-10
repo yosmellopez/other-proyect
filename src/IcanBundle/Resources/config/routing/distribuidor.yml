@@ -1,0 +1,31 @@
+distribuidor:
+    path:  /distribuidores
+    defaults: { _controller: IcanBundle:Distribuidor:index }
+    
+listarDistribuidor:
+    path:  /distribuidor/listarDistribuidor
+    defaults: { _controller: IcanBundle:Distribuidor:listar, _format: json }
+
+eliminarDistribuidor:
+    path:  /distribuidor/eliminarDistribuidor
+    defaults: { _controller: IcanBundle:Distribuidor:eliminar, _format: json }
+    
+eliminarDistribuidors:
+    path:  /distribuidor/eliminarDistribuidores
+    defaults: { _controller: IcanBundle:Distribuidor:eliminarDistribuidors, _format: json }
+ 
+salvarDistribuidor:
+    path:  /distribuidor/salvarDistribuidor
+    defaults: { _controller: IcanBundle:Distribuidor:salvar, _format: json }
+    
+salvarImagenDistribuidor:
+    path:  /distribuidor/salvarImagen
+    defaults: { _controller: IcanBundle:Distribuidor:salvarImagen, _format: json }
+    
+eliminarImagenDistribuidor:
+    path:  /distribuidor/eliminarImagen
+    defaults: { _controller: IcanBundle:Distribuidor:eliminarImagen, _format: json }
+       
+cargarDatosDistribuidor:
+    path:  /distribuidor/cargarDatos
+    defaults: { _controller: IcanBundle:Distribuidor:cargarDatos, _format: json }
