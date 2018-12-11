@@ -101,3 +101,35 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Crop Images -->
+<div class="modal fade" id="modal-image-crop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Cortar Imagen</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="crop_x" name="crop_x"/>
+                <input type="hidden" id="crop_y" name="crop_y"/>
+                <input type="text" id="crop_w" name="crop_w"/>
+                <input type="text" id="crop_h" name="crop_h"/>
+                <div class="container demo">
+                    <div style="float: left; width: 50%;margin-left: 20px">
+                        <div class="frame" style="margin: 0 0.3em; width: 300px; height: 300px;" id="div-imagen">
+                            <img id="imagen-jcrop" width="300" height="300">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal" id="btn-save-changes">Cortar Imagen
+                </button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

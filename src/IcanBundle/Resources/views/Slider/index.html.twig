@@ -2,7 +2,9 @@
 
 {% block subtitle %} - Sliders{% endblock %}
 
-{% block stylesheetspecific %}{% endblock %}
+{% block stylesheetspecific %}
+    <link href="{{ asset('bundles/ican/css/jquery.Jcrop.css') }}" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
     <!-- BEGIN: Subheader -->
@@ -297,6 +299,8 @@
 {% endblock %}
 
 {% block javascriptsspecific %}
+    <script src="{{ asset('bundles/ican/plugins/jcrop/jquery.color.js') }}"></script>
+    <script src="{{ asset('bundles/ican/plugins/jcrop/jquery.Jcrop.js') }}"></script>
     <script src="{{ asset('bundles/ican/js/pages/sliders.js') }}"></script>
     <script>
         jQuery(document).ready(function () {
