@@ -40,3 +40,6 @@ _distribuidor:
 
 _video:
   resource: "@IcanBundle/Resources/config/routing/video.yml"
+
+_comuna:
+  resource: "@IcanBundle/Resources/config/routing/comuna.yml"

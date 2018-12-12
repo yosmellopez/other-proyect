@@ -1,0 +1,23 @@
+comuna:
+    path:  /comunas
+    defaults: { _controller: IcanBundle:Comuna:index }
+    
+listarComuna:
+    path:  /comuna/listarComuna
+    defaults: { _controller: IcanBundle:Comuna:listar, _format: json }
+
+eliminarComuna:
+    path:  /comuna/eliminarComuna
+    defaults: { _controller: IcanBundle:Comuna:eliminar, _format: json }
+    
+eliminarComunas:
+    path:  /comuna/eliminarComunaes
+    defaults: { _controller: IcanBundle:Comuna:eliminarComunas, _format: json }
+ 
+salvarComuna:
+    path:  /comuna/salvarComuna
+    defaults: { _controller: IcanBundle:Comuna:salvar, _format: json }
+
+cargarDatosComuna:
+    path:  /comuna/cargarDatos
+    defaults: { _controller: IcanBundle:Comuna:cargarDatos, _format: json }

@@ -13,7 +13,7 @@ class DistribuidorRepository extends EntityRepository
      * @author Marcel
      */
     public function ListarOrdenadas() {
-        $consulta = $this->createQueryBuilder('m')->where('m.estado = 1')->orderBy('m.nombre', 'ASC');
+        $consulta = $this->createQueryBuilder('m')->where('m.provincia = 1')->orderBy('m.provincia', 'ASC');
 
         $lista = $consulta->getQuery()->getResult();
         return $lista;
@@ -28,6 +28,19 @@ class DistribuidorRepository extends EntityRepository
     public function BuscarPorImagen($imagen) {
         $criteria = array('imagen' => $imagen);
         return $this->findOneBy($criteria);
+    }
+
+    /**
+     * BuscarPorImagen: Devuelve el slider de la imagen
+     * @param string $imagen imagen
+     *
+     * @author Marcel
+     */
+    public function BuscarPorComuna($comuna) {
+        $consulta = $this->createQueryBuilder('m')->where('m.comuna=:comuna');
+        $consulta->setParameter("comuna", $comuna);
+        $lista = $consulta->getQuery()->getResult();
+        return $lista;
     }
 
     /**

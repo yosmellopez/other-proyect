@@ -135,6 +135,7 @@
                   enctype="multipart/form-data" method="post">
 
                 <input type="hidden" id="slider_id" name="slider_id"/>
+                <input type="hidden" id="imagen_name" name="imagen"/>
 
                 <div class="m-portlet__body">
                     <div class="m-form__section m-form__section--first">
@@ -163,9 +164,8 @@
                                 <span class="ic-small italic">(obligatorio)</span>
                             </label>
                             <p class="m-form__help">
-                                Puedes arrastrar una imagen directamente desde una carpeta de
-                                tu computadora al área señalada en este paso. O simplemente hacer click. Las
-                                imágenes deben estar en formato jpg, jpeg o png.
+                                Puedes arrastrar una imagen directamente desde una carpeta de tu computadora al área señalada en este paso.
+                                O simplemente hacer click. Las imágenes deben estar en formato jpg, jpeg o png.
                             </p>
                             <div class="row">
                                 <div class="col-md-5" id="processing-dropzone">
@@ -174,9 +174,7 @@
                                             <h3 class="m-dropzone__msg-title">
                                                 Arrastra o has click para subir.
                                             </h3>
-                                            <span class="m-dropzone__msg-desc">
-                                                    sube tu galería de fotos
-                                                </span>
+                                            <span class="m-dropzone__msg-desc">sube tu galería de fotos</span>
                                         </div>
                                     </div>
                                 </div>
@@ -190,8 +188,7 @@
                             </label>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input type="text" class="form-control event-change" id="url"
-                                           name="url"/>
+                                    <input type="text" class="form-control event-change" id="url" name="url"/>
                                 </div>
                             </div>
                             <div class="form-group m-form__group">
@@ -203,14 +200,12 @@
                                         <div class="m-form__group form-group">
                                             <div class="m-radio-inline">
                                                 <label class="m-radio">
-                                                    <input type="radio" name="radioformadeabrir" id="formadeabrirself"
-                                                           class="event-change" checked>
+                                                    <input type="radio" name="radioformadeabrir" id="formadeabrirself" class="event-change" checked>
                                                     Abrir enlace en la misma ventana
                                                     <span></span>
                                                 </label>
                                                 <label class="m-radio">
-                                                    <input type="radio" name="radioformadeabrir" id="formadeabrirblank"
-                                                           class="event-change">
+                                                    <input type="radio" name="radioformadeabrir" id="formadeabrirblank" class="event-change">
                                                     Abrir enlace en una ventana nueva
                                                     <span></span>
                                                 </label>
@@ -303,6 +298,7 @@
     <script src="{{ asset('bundles/ican/plugins/jcrop/jquery.Jcrop.js') }}"></script>
     <script src="{{ asset('bundles/ican/js/pages/sliders.js') }}"></script>
     <script>
+        var rutaServidor = "{{ ruta }}";
         jQuery(document).ready(function () {
             Sliders.init();
         });
