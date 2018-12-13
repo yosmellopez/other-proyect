@@ -305,7 +305,6 @@ class ComunaController extends BaseController
             $mensaje = ($cant_eliminada == count($ids)) ? "La operación se ha realizado correctamente" : "La operación se ha realizado correctamente. Pero atención no se pudo eliminar todas las comunaes seleccionadas porque están asociadas a un producto";
             $resultado['message'] = $mensaje;
         }
-
         return $resultado;
     }
 

@@ -250,7 +250,7 @@ class SliderController extends BaseController
         $jpeg_quality = 90;
         $img_r = imagecreatefromjpeg($src);
         $dst_r = ImageCreateTrueColor($targ_w, $targ_h);
-        imagecopyresampled($dst_r, $img_r, 0, 0, $x, $y, $targ_w, $targ_h, $targ_w, $targ_h);
+        imagecopyresampled($dst_r, $img_r, 0, 0, $x - 200, $y, $targ_w - 200, $targ_h, $targ_w - 300, $targ_h);
         imagejpeg($dst_r, $dir . $imagen, $jpeg_quality);
         $resultadoJson = array("success" => true, "message" => "Hasta ahora todo bien", "file" => $ruta . $dir, "imagen" => $imagen);
         return new Response(json_encode($resultadoJson));
