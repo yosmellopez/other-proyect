@@ -3,8 +3,8 @@
 {% block subtitle %} - Productos{% endblock %}
 
 {% block stylesheetspecific %}
-    <link href="{{ asset('bundles/ican/plugins/jquery-tags-input/jquery.tagsinput.css') }}" rel="stylesheet"
-          type="text/css"/>
+    <link href="{{ asset('bundles/ican/plugins/jquery-tags-input/jquery.tagsinput.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('bundles/ican/css/jquery.Jcrop.css') }}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -595,6 +595,8 @@
 {% block javascriptsspecific %}
     <script src="{{ asset('bundles/ican/plugins/jquery-tags-input/jquery.tagsinput.min.js') }}"></script>
     <script src="{{ asset('bundles/ican/plugins/jquery-number/jquery.number.min.js') }}"></script>
+    <script src="{{ asset('bundles/ican/plugins/jcrop/jquery.color.js') }}"></script>
+    <script src="{{ asset('bundles/ican/plugins/jcrop/jquery.Jcrop.js') }}"></script>
     <script src="{{ asset('bundles/ican/js/pages/productos.js') }}"></script>
     <script>
         jQuery(document).ready(function () {

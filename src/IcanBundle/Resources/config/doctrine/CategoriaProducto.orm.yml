@@ -1,0 +1,62 @@
+IcanBundle\Entity\CategoriaProducto:
+  type: entity
+  repositoryClass: IcanBundle\Entity\CategoriaProductoRepository
+  table: categoria
+  id:
+    categoriaId:
+      type: integer
+      nullable: false
+      options:
+        unsigned: false
+      id: true
+      column: categoria_producto_id
+      generator:
+        strategy: AUTO
+  fields:
+    nombre:
+      type: string
+      length: 255
+      nullable: false
+      options:
+        fixed: false
+    titulo:
+      type: string
+      length: 255
+      options:
+        fixed: false
+      nullable: true
+    descripcion:
+      type: string
+      length: 255
+      options:
+        fixed: false
+      nullable: true
+    tags:
+      type: text
+      nullable: false
+    imagen:
+      type: string
+      length: 255
+      options:
+        fixed: false
+      nullable: true
+    url:
+      type: string
+      length: 255
+      options:
+        fixed: false
+      nullable: true
+    estado:
+      type: boolean
+      nullable: true
+  manyToOne:
+    categoriaPadre:
+      targetEntity: CategoriaProducto
+      cascade: {  }
+      mappedBy: null
+      inversedBy: null
+      joinColumns:
+        categoria_padre_id:
+          referencedColumnName: categoria_producto_id
+      orphanRemoval: false
+  lifecycleCallbacks: {  }

@@ -40,7 +40,7 @@ class CategoriaProducto
      *
      * @ORM\ManyToOne(targetEntity="CategoriaProducto")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="categoria_padre_id", referencedColumnName="categoria_id")
+     *   @ORM\JoinColumn(name="categoria_padre_id", referencedColumnName="categoria_producto_id")
      * })
      */
     private $categoriaPadre;
