@@ -1,0 +1,21 @@
+parameters:
+    database_driver:   pdo_mysql
+    database_host:     localhost
+    database_port:     ~
+    database_name:     repsol
+    database_user:     rootecnolutions
+    database_password: 1q2w3e4r5t
+
+    mailer_transport:  smtp
+    mailer_host:       smtp.gmail.com
+    mailer_user:       no-reply@disrupsoft.com
+    mailer_password:   1q2w.3e4r
+    mailer_sender_address: no-reply@disrupsoft.com
+    mailer_port:       465
+    mailer_security:   ssl
+
+    locale:            en
+    secret:            tretrtsdasfd3gfhfghfffghfghfghtyy
+
+    recaptcha_publick_key: 6LfSPxgUAAAAANzAeFpcdXEFfElId66AtjRVMvO8
+    recaptcha_private_key: 6LfSPxgUAAAAAFBKiNx55iI__nnbiMR3SXxNew9T
